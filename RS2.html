@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Riel Sites | The Pinnacle of Glassmorphic Luxury</title>
+    <!-- Google Fonts: Playfair Display for elegance + Inter for modernity -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Light theme — champagne, pearl, gold accents */
+            --bg-gradient-start: rgba(250, 248, 245, 0.55);
+            --bg-gradient-end: rgba(240, 235, 228, 0.4);
+            --glass-bg: rgba(255, 255, 250, 0.48);
+            --glass-border: rgba(230, 220, 210, 0.7);
+            --text-primary: #1e1b1a;
+            --text-secondary: #4a423c;
+            --accent: #c68a5a;
+            --accent-gold: #d4af7a;
+            --accent-light: #e5c6a3;
+            --accent-hover: #b27748;
+            --card-shadow: 0 25px 40px -12px rgba(0, 0, 0, 0.15);
+            --footer-bg: rgba(250, 245, 240, 0.65);
+            --input-bg: rgba(255, 255, 250, 0.8);
+            --toggle-bg: rgba(0, 0, 0, 0.06);
+            --nav-blur: blur(20px);
+            --menu-bg: rgba(15, 12, 18, 0.92);
+            --border-glow: 0 0 12px rgba(198, 138, 90, 0.3);
+            --hero-overlay: radial-gradient(circle at 30% 20%, rgba(198,138,90,0.18), rgba(212,175,122,0.05), transparent 70%);
+        }
+
+        body.dark {
+            --bg-gradient-start: rgba(18, 16, 24, 0.85);
+            --bg-gradient-end: rgba(10, 8, 18, 0.75);
+            --glass-bg: rgba(25, 22, 35, 0.6);
+            --glass-border: rgba(100, 85, 75, 0.5);
+            --text-primary: #f5efe9;
+            --text-secondary: #ddd2c6;
+            --accent: #e8bf97;
+            --accent-gold: #e9cf9e;
+            --accent-light: #f5dcbb;
+            --accent-hover: #daad7c;
+            --card-shadow: 0 28px 42px -12px rgba(0, 0, 0, 0.5);
+            --footer-bg: rgba(18, 16, 24, 0.7);
+            --input-bg: rgba(38, 34, 48, 0.75);
+            --toggle-bg: rgba(255, 245, 235, 0.12);
+            --border-glow: 0 0 14px rgba(232, 191, 151, 0.25);
+            --hero-overlay: radial-gradient(circle at 70% 30%, rgba(232,191,151,0.2), rgba(198,138,90,0.08), transparent 75%);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #e8dfd7;
+            transition: background 0.5s ease, color 0.3s ease;
+            color: var(--text-primary);
+            overflow-x: hidden;
+        }
+
+        body.dark {
+            background: #0a0812;
+        }
+
+        /* Subtle texture overlay for depth */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgdmlld0JveD0iMCAwIDQwIDQwIj48cGF0aCBmaWxsPSIjZmZmZmZmIiBmaWxsLW9wYWNpdHk9IjAuMDIiIGQ9Ik0wIDBoNDB2NDBIMHoiLz48L3N2Zz4=');
+            pointer-events: none;
+            z-index: -2;
+            opacity: 0.5;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+        /* ----- LUXURY NAVBAR ----- */
+        .navbar {
+            backdrop-filter: var(--nav-blur);
+            background: var(--glass-bg);
+            border-bottom: 1px solid var(--glass-border);
+            padding: 22px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.1rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            background: linear-gradient(135deg, #c68a5a, #e5c6a3, #d4af7a, #b87c4f);
+            background-size: 200% auto;
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            transition: all 0.3s;
+        }
+
+        .logo span {
+            font-weight: 500;
+            background: none;
+            color: var(--text-primary);
+            background-clip: unset;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.8rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 500;
+            color: var(--text-primary);
+            transition: 0.3s;
+            font-size: 1rem;
+            letter-spacing: 0.3px;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-gold));
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .theme-toggle {
+            background: var(--toggle-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 60px;
+            padding: 8px 22px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 500;
+            backdrop-filter: blur(8px);
+            transition: all 0.3s;
+            color: var(--text-primary);
+        }
+
+        .theme-toggle:hover {
+            border-color: var(--accent);
+            box-shadow: var(--border-glow);
+        }
+
+        /* Hamburger button - text removed, icon only */
+        .hamburger {
+            display: none;
+            background: var(--toggle-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 50px;
+            padding: 10px 16px;
+            cursor: pointer;
+            font-size: 1.3rem;
+            color: var(--accent);
+            backdrop-filter: blur(8px);
+            transition: 0.2s;
+        }
+
+        .hamburger:hover {
+            border-color: var(--accent);
+            box-shadow: var(--border-glow);
+        }
+
+        /* ----- SIDE MENU (LUXURY) ----- */
+        .side-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 45%;
+            max-width: 440px;
+            height: 100%;
+            background: var(--menu-bg);
+            backdrop-filter: blur(28px);
+            border-left: 1px solid rgba(198,138,90,0.3);
+            box-shadow: -20px 0 50px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            transition: right 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            flex-direction: column;
+            padding: 40px 32px;
+            gap: 36px;
+        }
+
+        .side-menu.open {
+            right: 0;
+        }
+
+        .menu-header {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .close-menu {
+            background: rgba(255,255,240,0.08);
+            border: 1px solid var(--glass-border);
+            border-radius: 60px;
+            width: 52px;
+            height: 52px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--accent);
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .close-menu:hover {
+            background: var(--accent);
+            color: #1e1b1a;
+            transform: rotate(90deg);
+        }
+
+        .menu-links {
+            display: flex;
+            flex-direction: column;
+            gap: 36px;
+            margin-top: 20px;
+        }
+
+        .menu-links a {
+            font-size: 1.9rem;
+            font-family: 'Playfair Display', serif;
+            font-weight: 500;
+            text-decoration: none;
+            color: var(--text-primary);
+            border-bottom: 1px solid transparent;
+            transition: 0.25s;
+            display: inline-block;
+            width: fit-content;
+        }
+
+        .menu-links a:hover {
+            color: var(--accent-gold);
+            transform: translateX(8px);
+            border-bottom-color: var(--accent-gold);
+        }
+
+        /* ========== RECREATED HERO PAGE — CINEMATIC LUXURY ========== */
+        .hero {
+            position: relative;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            padding: 80px 0 100px;
+            isolation: isolate;
+            overflow: hidden;
+        }
+
+        /* Animated abstract golden orbs */
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: var(--hero-overlay);
+            z-index: -1;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 40%;
+            height: 40%;
+            top: -10%;
+            right: -5%;
+            background: radial-gradient(circle, rgba(212,175,122,0.2) 0%, rgba(198,138,90,0) 70%);
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: -1;
+            animation: floatGlow 12s infinite alternate;
+        }
+
+        @keyframes floatGlow {
+            0% { transform: translate(0, 0) scale(1); opacity: 0.4; }
+            100% { transform: translate(-40px, 40px) scale(1.3); opacity: 0.7; }
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-content {
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-subtitle {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 6px;
+            color: var(--accent-gold);
+            margin-bottom: 24px;
+            font-weight: 500;
+            display: inline-block;
+            background: rgba(198,138,90,0.15);
+            padding: 6px 18px;
+            border-radius: 40px;
+            backdrop-filter: blur(4px);
+        }
+
+        .hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4.8rem;
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #FFFFFF, #f7ede2, #e8bf97, #c68a5a);
+            background-size: 250% auto;
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 28px;
+            animation: shimmerText 9s ease infinite;
+        }
+
+        @keyframes shimmerText {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            margin-bottom: 38px;
+            max-width: 90%;
+            font-weight: 400;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 32px;
+            margin-top: 40px;
+        }
+
+        .stat-item {
+            text-align: left;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            font-family: 'Playfair Display', serif;
+            color: var(--accent);
+            letter-spacing: -0.02em;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-secondary);
+        }
+
+        .hero-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .luxury-badge {
+            backdrop-filter: blur(16px);
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 48px;
+            padding: 28px 32px;
+            width: 100%;
+            max-width: 380px;
+            text-align: center;
+            transition: all 0.4s;
+            box-shadow: var(--card-shadow);
+            animation: fadeInRight 1s ease-out;
+        }
+
+        .luxury-badge i {
+            font-size: 3.2rem;
+            background: linear-gradient(135deg, var(--accent-gold), var(--accent));
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 20px;
+        }
+
+        .luxury-badge h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.7rem;
+            margin-bottom: 12px;
+        }
+
+        .luxury-badge p {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+        }
+
+        .gold-divider {
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent-gold), transparent);
+            margin: 20px auto 0;
+        }
+
+        .btn-primary {
+            background: linear-gradient(115deg, var(--accent), var(--accent-gold));
+            border: none;
+            padding: 15px 38px;
+            border-radius: 60px;
+            font-weight: 600;
+            color: #1e1b1a;
+            cursor: pointer;
+            transition: all 0.35s;
+            display: inline-block;
+            text-decoration: none;
+            box-shadow: 0 12px 22px -8px rgba(0, 0, 0, 0.2);
+            letter-spacing: 0.5px;
+            font-size: 1rem;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 28px -12px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(115deg, var(--accent-hover), #e8c296);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1.5px solid var(--accent);
+            padding: 13px 32px;
+            border-radius: 60px;
+            font-weight: 500;
+            color: var(--accent);
+            margin-left: 16px;
+            transition: 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-outline:hover {
+            background: var(--accent);
+            color: #1e1b1a;
+            border-color: var(--accent);
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(40px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        /* Rest of sections (services, portfolio, contact, footer) */
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 64px;
+            text-align: center;
+            background: linear-gradient(130deg, var(--text-primary), var(--accent-gold));
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .glass-card {
+            backdrop-filter: blur(18px);
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 42px;
+            padding: 34px 28px;
+            transition: all 0.4s;
+            box-shadow: var(--card-shadow);
+            position: relative;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(198,138,90,0.5);
+        }
+
+        .services-grid, .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+            margin-bottom: 70px;
+        }
+
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 44px;
+            margin-bottom: 50px;
+        }
+
+        footer {
+            backdrop-filter: blur(24px);
+            background: var(--footer-bg);
+            border-top: 1px solid var(--glass-border);
+            padding: 48px 0 40px;
+            margin-top: 50px;
+            border-radius: 56px 56px 0 0;
+        }
+
+        @media (max-width: 1000px) {
+            .hero-grid { grid-template-columns: 1fr; text-align: center; gap: 40px; }
+            .hero-description { max-width: 100%; margin-left: auto; margin-right: auto; }
+            .hero-stats { justify-content: center; }
+            .hero-content h1 { font-size: 3.5rem; }
+            .luxury-badge { margin: 0 auto; }
+        }
+
+        @media (max-width: 850px) {
+            .nav-links { display: none; }
+            .hamburger { display: flex; align-items: center; justify-content: center; }
+            .side-menu { width: 75%; }
+            .hero-content h1 { font-size: 2.8rem; }
+            .section-title { font-size: 2.4rem; }
+            .contact-wrapper { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 550px) {
+            .hero { padding: 60px 0 80px; }
+            .btn-outline { margin-left: 0; margin-top: 16px; display: inline-block; }
+            .hero-stats { flex-direction: column; align-items: center; gap: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="menu-overlay" id="menuOverlay" style="position:fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.4); backdrop-filter: blur(5px); z-index:999; opacity:0; visibility:hidden; transition:0.3s;"></div>
+<div class="side-menu" id="sideMenu">
+    <div class="menu-header"><button class="close-menu" id="closeMenuBtn"><i class="fas fa-times"></i></button></div>
+    <div class="menu-links"><a href="#home">Home</a><a href="#services">Services</a><a href="#portfolio">Portfolio</a><a href="#contact">Contact</a></div>
+    <button class="menu-theme-toggle" id="menuThemeToggle" style="background:var(--toggle-bg); border:1px solid var(--glass-border); border-radius:60px; padding:14px; display:flex; align-items:center; justify-content:center; gap:12px; cursor:pointer;"><i class="fas fa-moon"></i> <span>Luxe Radiance</span></button>
+    <div class="menu-footer-note" style="text-align:center; margin-top:20px; font-size:0.8rem;"><i class="fas fa-gem"></i> Atelier Riel — Timeless Craft</div>
+</div>
+
+<div class="navbar">
+    <div class="container nav-container">
+        <div class="logo">Riel<span>Sites</span></div>
+        <div class="nav-links">
+            <a href="#home">Home</a><a href="#services">Services</a><a href="#portfolio">Portfolio</a><a href="#contact">Contact</a>
+            <button id="themeToggleBtn" class="theme-toggle"><i class="fas fa-moon"></i> <span>Luxe Theme</span></button>
+        </div>
+        <!-- Hamburger button - text removed, only icon -->
+        <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
+            <i class="fas fa-bars"></i>
+        </button>
+    </div>
+</div>
+
+<main>
+    <!-- RECREATED HERO PAGE - MASTERPIECE SECTION -->
+    <section id="home" class="hero">
+        <div class="container hero-grid">
+            <div class="hero-content">
+                <div class="hero-subtitle"><i class="fas fa-gem"></i> MAISON OF DIGITAL ART</div>
+                <h1>Where Vision<br>Transcends Pixels</h1>
+                <p class="hero-description">Riel Sites sculpts immersive glassmorphic ecosystems — bespoke, radiant, and timeless. Experience digital luxury redefined.</p>
+                <div>
+                    <a href="#contact" class="btn-primary">Orchestrate a Masterpiece <i class="fas fa-arrow-right"></i></a>
+                    <a href="#portfolio" class="btn-outline">Explore Icons</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item"><div class="stat-number">8+</div><div class="stat-label">Years of Excellence</div></div>
+                    <div class="stat-item"><div class="stat-number">127</div><div class="stat-label">Luxury Projects</div></div>
+                    <div class="stat-item"><div class="stat-number">24/7</div><div class="stat-label">Concierge Support</div></div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="luxury-badge">
+                    <i class="fas fa-crown"></i>
+                    <h3>Glassmorphic Atelier</h3>
+                    <p>Tailored digital identities that resonate with opulence and innovation.</p>
+                    <div class="gold-divider"></div>
+                    <div style="margin-top: 20px;"><i class="fas fa-star-of-life" style="font-size: 1rem; opacity: 0.7;"></i> <span style="margin-left: 8px;">Awaited by visionaries</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" style="padding: 50px 0 40px;">
+        <div class="container"><h2 class="section-title">Bespoke Services</h2>
+            <div class="services-grid">
+                <div class="glass-card"><i class="fas fa-gem"></i><h3>Luxury Dev</h3><p>High-end web applications with bespoke glassmorphic details.</p></div>
+                <div class="glass-card"><i class="fas fa-crown"></i><h3>Elite UI/UX</h3><p>Exclusive design systems to elevate your brand presence.</p></div>
+                <div class="glass-card"><i class="fas fa-cloud-moon"></i><h3>Glassmorphic Identity</h3><p>Frosted gradients and modern aesthetics.</p></div>
+                <div class="glass-card"><i class="fas fa-rocket"></i><h3>Performance & SEO</h3><p>Lightning-fast experiences and search dominance.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" style="padding: 20px 0 50px;">
+        <div class="container"><h2 class="section-title">Curated Portfolio</h2>
+            <div class="portfolio-grid">
+                <div class="portfolio-item glass-card"><div class="portfolio-thumb" style="display:flex; align-items:center; justify-content:center; height:180px;"><i class="fas fa-champagne-glasses" style="font-size:3rem;"></i></div><h3>Maison Verre</h3><p>Luxury fragrance brand — immersive glassmorphic storefront.</p></div>
+                <div class="portfolio-item glass-card"><div class="portfolio-thumb" style="display:flex; align-items:center; justify-content:center; height:180px;"><i class="fas fa-building" style="font-size:3rem;"></i></div><h3>Nebula Bank</h3><p>High-finance dashboard with frosted realtime analytics.</p></div>
+                <div class="portfolio-item glass-card"><div class="portfolio-thumb" style="display:flex; align-items:center; justify-content:center; height:180px;"><i class="fas fa-vr-cardboard" style="font-size:3rem;"></i></div><h3>Orbital Studio</h3><p>Award-winning creative platform with dynamic glassmorphism.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" style="padding: 20px 0 30px;">
+        <div class="container"><h2 class="section-title">Concierge Connect</h2>
+            <div class="contact-wrapper">
+                <div class="glass-card"><h3 style="margin-bottom:28px;">Send an Epistle</h3>
+                    <form id="contactForm" action="process.php" method="POST">
+                        <div class="form-group"><input type="text" name="name" placeholder="Full name" required style="width:100%; padding:16px 24px; background:var(--input-bg); border-radius:60px; border:1px solid var(--glass-border);"></div>
+                        <div class="form-group"><input type="email" name="email" placeholder="Email address" required style="width:100%; padding:16px 24px; background:var(--input-bg); border-radius:60px;"></div>
+                        <div class="form-group"><input type="text" name="subject" placeholder="Subject / Project" required style="width:100%; padding:16px 24px; background:var(--input-bg); border-radius:60px;"></div>
+                        <div class="form-group"><textarea name="message" placeholder="Describe your vision..." required style="width:100%; padding:16px 24px; border-radius:32px;"></textarea></div>
+                        <button type="submit" class="btn-primary" style="width:100%;">Submit Inquiry <i class="fas fa-feather-alt"></i></button>
+                        <div id="formStatus" class="form-status" style="margin-top: 16px;"></div>
+                    </form>
+                </div>
+                <div class="contact-info glass-card"><h3>The Atelier</h3>
+                    <div style="display:flex; align-items:center; gap:16px; margin:20px 0;"><i class="fas fa-envelope"></i> <span>studio@rielsites.com</span></div>
+                    <div style="display:flex; align-items:center; gap:16px; margin:20px 0;"><i class="fas fa-phone-alt"></i> <span>+1 (310) 883-2249</span></div>
+                    <div style="display:flex; align-items:center; gap:16px;"><i class="fas fa-map-pin"></i> <span>Los Angeles / London — Global</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer><div class="container footer-content"><div>© 2025 Riel Sites — Artisanal Glassmorphic Code & Design</div><div class="footer-social"><a href="#"><i class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-behance"></i></a><a href="#"><i class="fab fa-linkedin-in"></i></a><a href="#"><i class="fab fa-instagram"></i></a></div></div></footer>
+
+<script>
+    (function() {
+        const body = document.body;
+        const themeBtn = document.getElementById('themeToggleBtn');
+        const menuThemeBtn = document.getElementById('menuThemeToggle');
+        const stored = localStorage.getItem('theme');
+        if (stored === 'dark') body.classList.add('dark');
+        function updateUI() {
+            const isDark = body.classList.contains('dark');
+            const mainIcon = themeBtn?.querySelector('i');
+            if(mainIcon) mainIcon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+            const menuIcon = menuThemeBtn?.querySelector('i');
+            if(menuIcon) menuIcon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+        }
+        updateUI();
+        function setTheme(theme) { if(theme==='dark') body.classList.add('dark'); else body.classList.remove('dark'); localStorage.setItem('theme', theme); updateUI(); }
+        themeBtn?.addEventListener('click', () => setTheme(body.classList.contains('dark') ? 'light' : 'dark'));
+        menuThemeBtn?.addEventListener('click', () => setTheme(body.classList.contains('dark') ? 'light' : 'dark'));
+        
+        const ham = document.getElementById('hamburgerBtn'), side = document.getElementById('sideMenu'), close = document.getElementById('closeMenuBtn'), overlay = document.getElementById('menuOverlay');
+        function openM() { side.classList.add('open'); overlay.style.opacity='1'; overlay.style.visibility='visible'; document.body.style.overflow='hidden'; }
+        function closeM() { side.classList.remove('open'); overlay.style.opacity='0'; overlay.style.visibility='hidden'; document.body.style.overflow=''; }
+        ham?.addEventListener('click', openM); close?.addEventListener('click', closeM); overlay?.addEventListener('click', closeM);
+        document.querySelectorAll('.menu-links a').forEach(l=>l.addEventListener('click',(e)=>{ const t=l.getAttribute('href'); if(t&&t!=='#'){ e.preventDefault(); closeM(); setTimeout(()=>document.querySelector(t)?.scrollIntoView({behavior:'smooth'}),280); } else closeM(); }));
+        const form = document.getElementById('contactForm'), statusDiv = document.getElementById('formStatus');
+        form?.addEventListener('submit', (e) => { e.preventDefault(); const fd=new FormData(form); if(!fd.get('name')?.trim()||!fd.get('email')?.trim()||!fd.get('subject')?.trim()||!fd.get('message')?.trim()) { statusDiv.innerHTML='<span style="color:#d97777;">✧ All fields required</span>'; return; } statusDiv.innerHTML='<span style="color: #c68a5a;">✓ Message received. (PHP ready: process.php)</span>'; form.reset(); setTimeout(()=>statusDiv.innerHTML='',4000); });
+        document.querySelectorAll('.nav-links a[href^="#"]').forEach(a=>a.addEventListener('click',(e)=>{ const h=a.getAttribute('href'); if(h&&h!=='#'){ e.preventDefault(); document.querySelector(h)?.scrollIntoView({behavior:'smooth'}); } }));
+        const heroCta = document.querySelector('.hero .btn-primary'); if(heroCta) heroCta.addEventListener('click',(e)=>{ e.preventDefault(); document.querySelector('#contact')?.scrollIntoView({behavior:'smooth'}); });
+        window.addEventListener('resize',()=>{ if(window.innerWidth>850 && side?.classList.contains('open')) closeM(); });
+    })();
+</script>
+</body>
+</html>
